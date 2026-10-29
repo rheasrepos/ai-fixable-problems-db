@@ -18,7 +18,7 @@ Design: linked tables (problems ↔ datasets); UN SDG taxonomy; solution kind (d
 ## Next
 
 - [ ] Add the first 3–5 problems by hand to test the schema.
-- [ ] raddotcom page: searchable table built from `build/problems.json`.
+- [x] raddotcom page: `/ai-problems` route in the raddotcom repo reads `static/ai-problems.json`. Run `sync-to-raddotcom.command` after editing data, then commit and push raddotcom.
 
 ## Origin note
 
