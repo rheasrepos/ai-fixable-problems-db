@@ -5,6 +5,16 @@ LIST_SEP = ";"
 MATURITY = {"idea", "research", "pilot", "deployed"}
 
 TABLES = {
+    "candidate_issues": {  # raw list of problems pulled from outside sources, not yet written up
+        "columns": [
+            ("issue",      "str",  True,  None),
+            ("source",     "str",  True,  None),
+            ("url",        "url",  True,  None),
+            ("status",     "enum", True,  {"candidate", "promoted", "out_of_scope"}),
+            ("problem_id", "slug", False, None),  # set when promoted
+        ],
+        "pk": ("issue", "source"), "fk": {},
+    },
     "sdg_goals": {
         "columns": [("sdg_goal", "int", True, None), ("name", "str", True, None)],
         "pk": ("sdg_goal",), "fk": {},

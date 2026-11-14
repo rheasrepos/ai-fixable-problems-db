@@ -1,1 +1,8 @@
 problem_id,gap,why_it_matters,how_to_close
+food-waste,Measured (not modeled) household waste for most countries,"Estimates for countries without studies are extrapolated, so models learn from guesses.",Standardized household waste audits; smart-bin data
+food-waste,Store-level surplus data,"Retail surplus is private, so matching it to food banks can't be trained or evaluated.",Partnerships with grocers; anonymized POS + markdown data
+dangerous-climate-conditions,"Street-level outcomes (heat illness, flooded addresses)",Reanalysis is about 30 km resolution; harm is measured at the block.,Hospital heat-illness records; insurance and 311 flood reports
+shelter-scarcity,Continuous homelessness data,Point-in-Time counts are a single night a year and undercount hidden homelessness.,"Linked shelter, school and health records with consent"
+shelter-scarcity,Eviction filings,"Not in either dataset, but the most direct leading signal.",Court records (e.g. Eviction Lab)
+living-wage-gap,Open bulk living-wage data,"MIT's data requires a license beyond 10 locations, so a free tool can't redistribute it.",License request; or build an open cost-of-living estimate
+living-wage-gap,Wages by employer,"Public wage data is by sector and region, not by employer.",Job-posting pay ranges (pay transparency laws)

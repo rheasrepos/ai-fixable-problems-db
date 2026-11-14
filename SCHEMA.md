@@ -14,7 +14,8 @@ sdg_goals ──< problems >──< problem_datasets >── datasets
 | Table | One row is | Key columns |
 |---|---|---|
 | sdg_goals | a UN Sustainable Development Goal (1–17, prefilled) | sdg_goal, name |
-| problems | a problem AI could help fix | problem_id, name, description, sdg_goal, sdg_targets (e.g. `3.4;3.8`), solution_kind (digital / physical / hybrid), solution_summary, maturity (idea / research / pilot / deployed) |
+| candidate_issues | a problem pulled from an outside list, not yet written up | issue, source, url, status (candidate / promoted / out_of_scope), problem_id |
+| problems | a problem AI could help fix | problem_id, name, description, sdg_goal (primary), sdg_targets (any goal, e.g. `12.3;2.1`), solution_kind (digital / physical / hybrid), solution_summary, maturity (idea / research / pilot / deployed) |
 | datasets | an existing dataset | dataset_id, name, url, access (open / gated / proprietary / unknown), license, size (with units), modality |
 | problem_datasets | how one dataset serves one problem | problem_id, dataset_id, role |
 | existing_work | a paper, project, product or policy already working on it | work_id, problem_id, title, url, kind, year, maturity |

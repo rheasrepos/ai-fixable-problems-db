@@ -53,8 +53,8 @@ def main(data_dir="data"):
         if p["problem_id"] not in risk_ids:
             errors.append(f"problems.csv:{i} {p['problem_id']} has no row in risks.csv (ethics, morality, devils_advocate are required)")
         for tg in filter(None, (s.strip() for s in p["sdg_targets"].split(LIST_SEP))):
-            if not TARGET.match(tg) or tg.split(".")[0] != p["sdg_goal"]:
-                errors.append(f"problems.csv:{i} sdg_target {tg!r} should look like {p['sdg_goal']}.x")
+            if not TARGET.match(tg) or not 1 <= int(tg.split(".")[0]) <= 17:
+                errors.append(f"problems.csv:{i} sdg_target {tg!r} should look like <goal 1-17>.<target>")
 
     for m in errors[:200]: print("ERROR", m)
     print(", ".join(f"{len(v)} {k}" for k, v in data.items()), f"| {len(errors)} errors")

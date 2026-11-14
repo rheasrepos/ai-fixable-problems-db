@@ -1,1 +1,7 @@
 problem_id,dataset_id,role
+food-waste,unep-food-waste-index-2024,"Baseline: how much is wasted, where, and at which stage."
+dangerous-climate-conditions,era5,Historical heat and precipitation fields to train and validate downscaling.
+shelter-scarcity,un-habitat-slum-population,Global picture of inadequate housing by country over time.
+shelter-scarcity,hud-ahar-pit,US ground truth for homelessness by locality.
+living-wage-gap,mit-living-wage,US cost-of-living side of the gap.
+living-wage-gap,ilostat-wages,"Wage side of the gap, internationally comparable."
