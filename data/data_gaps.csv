@@ -8,3 +8,4 @@ living-wage-gap,Open bulk living-wage data,"MIT's data requires a license beyond
 living-wage-gap,Wages by employer,"Public wage data is by sector and region, not by employer.",Job-posting pay ranges (pay transparency laws)
 raising-kids-in-a-digital-world,How young people actually use AI companions,Usage data sits with companies; surveys rely on self-report.,Privacy-preserving data donation by teens and families; researcher access to platform data
 raising-kids-in-a-digital-world,Outcomes of youth programs,"Most youth-connection nonprofits don't publish measured outcomes, so effects can't be compared.",Shared outcome measures across grantees (loneliness and belonging scales)
+ai-black-box,Frontier model internals,Interpretability work mostly runs on small open models; frontier weights and training data are closed.,Researcher access programs; open-weight frontier releases

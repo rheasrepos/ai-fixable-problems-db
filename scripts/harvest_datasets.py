@@ -28,6 +28,7 @@ QUERIES = {
     "living-wage-gap": ["wages", "salary", "cost of living", "job postings", "minimum wage"],
     "culture-and-language-preservation": ["endangered languages", "low-resource languages", "indigenous languages",
                                           "oral history", "cultural heritage", "flores"],
+    "ai-black-box": ["red teaming", "jailbreak", "sparse autoencoder", "interpretability", "rlhf", "ai safety"],
 }
 EE_KEYWORDS = {  # Earth Engine is searched by keyword match on title/keywords/description
     "dangerous-climate-conditions": ["temperature", "precipitation", "flood", "drought", "reanalysis", "era5"],
@@ -46,6 +47,7 @@ RESEARCH_QUERIES = {
     "living-wage-gap": ["living wage", "minimum wage employment"],
     "raising-kids-in-a-digital-world": ["adolescent social media mental health", "cyberbullying", "AI companions adolescents"],
     "culture-and-language-preservation": ["endangered languages", "low-resource languages machine translation"],
+    "ai-black-box": ["mechanistic interpretability", "sparse autoencoders language models", "red teaming language models"],
 }
 RESEARCH_OUT = Path(__file__).parent.parent / "data" / "candidate_research.csv"
 RESEARCH_HEADER = ["area", "openalex_id", "title", "url", "year", "cited_by", "query", "status"]
