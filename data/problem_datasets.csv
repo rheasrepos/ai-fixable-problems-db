@@ -26,3 +26,10 @@ shelter-scarcity,hot-osm-hdx,Map infrastructure around housing; disaster damage.
 shelter-scarcity,eviction-lab-ets,Leading signal for housing loss.
 living-wage-gap,indeed-hiring-lab,Labor demand context for wage gaps.
 raising-kids-in-a-digital-world,cdc-yrbs,Track youth mental health alongside social media use.
+culture-and-language-preservation,wikimedia-dumps,Build text corpora and dictionaries for small languages; see which languages have almost no written web presence.
+culture-and-language-preservation,common-crawl,Find and extract text in low-resource languages (respecting page owners' rights).
+culture-and-language-preservation,internet-archive,Find out-of-print texts and historical recordings in endangered languages; check each item's rights.
+dangerous-climate-conditions,gdelt,"Track where disasters and displacement are reported, and how fast; compare with official data."
+food-waste,faostat-food-loss,Compare food loss across countries and supply-chain stages.
+living-wage-gap,wageindicator-living-wage,Cross-country living wage comparison; the free sample is enough to prototype.
+shelter-scarcity,gdelt,"Track news of evictions, displacement and refugee movements."

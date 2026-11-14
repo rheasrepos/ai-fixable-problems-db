@@ -29,6 +29,19 @@ TABLES = {
         ],
         "pk": ("area", "source", "source_id"), "fk": {},
     },
+    "candidate_research": {  # open-access papers found via OpenAlex; promote good ones to existing_work
+        "columns": [
+            ("area",       "slug", True,  None),
+            ("openalex_id","str",  True,  None),
+            ("title",      "str",  True,  None),
+            ("url",        "url",  True,  None),
+            ("year",       "int",  False, None),
+            ("cited_by",   "int",  False, None),
+            ("query",      "str",  False, None),
+            ("status",     "enum", True,  {"candidate", "promoted", "rejected"}),
+        ],
+        "pk": ("area", "openalex_id"), "fk": {},
+    },
     "sdg_goals": {
         "columns": [("sdg_goal", "int", True, None), ("name", "str", True, None)],
         "pk": ("sdg_goal",), "fk": {},

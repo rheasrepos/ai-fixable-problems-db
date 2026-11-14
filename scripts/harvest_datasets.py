@@ -8,6 +8,7 @@ Sources (official APIs only; no page scraping):
   - Google Earth Engine public STAC catalog (weather, climate, land, buildings)
   - NASA Earthdata (CMR)  https://cmr.earthdata.nasa.gov/search/collections.json?keyword=...
   - NOAA NCEI            https://www.ncei.noaa.gov/access/services/search/v1/datasets?text=...
+  - OpenAlex (papers, CC0) -> data/candidate_research.csv: most-cited open-access papers per area
 
 Usage: python3 scripts/harvest_datasets.py        (stdlib only; needs internet)
 Existing rows keep their status; new finds come in as status=candidate.
@@ -38,6 +39,16 @@ EARTH_QUERIES = {  # NASA and NOAA hold physical-world data, so only the areas w
     "food-waste": ["crop yield", "cropland", "food security", "agricultural drought"],
     "shelter-scarcity": ["population density", "human settlements", "urban extent"],
 }
+RESEARCH_QUERIES = {
+    "food-waste": ["food waste", "food loss and waste"],
+    "dangerous-climate-conditions": ["urban heat island", "flood early warning", "heat-related mortality"],
+    "shelter-scarcity": ["homelessness", "eviction", "informal settlements"],
+    "living-wage-gap": ["living wage", "minimum wage employment"],
+    "raising-kids-in-a-digital-world": ["adolescent social media mental health", "cyberbullying", "AI companions adolescents"],
+    "culture-and-language-preservation": ["endangered languages", "low-resource languages machine translation"],
+}
+RESEARCH_OUT = Path(__file__).parent.parent / "data" / "candidate_research.csv"
+RESEARCH_HEADER = ["area", "openalex_id", "title", "url", "year", "cited_by", "query", "status"]
 PER_QUERY = 15
 
 def get(url, timeout=30):
@@ -75,6 +86,38 @@ def noaa_ncei(area, q):
                "url": next((l.get("url") for l in (d.get("links") or {}).get("other", []) if isinstance(l, dict) and l.get("url")),
                            f"https://www.ncei.noaa.gov/access/search/dataset-search?text={urllib.parse.quote(d['id'])}"),
                "query": q, "license": "", "popularity": "NOAA NCEI"}
+
+def openalex(area, q):
+    url = "https://api.openalex.org/works?" + urllib.parse.urlencode({
+        "filter": f"title_and_abstract.search:{q},is_oa:true", "sort": "cited_by_count:desc", "per_page": PER_QUERY,
+        "select": "id,display_name,publication_year,cited_by_count,open_access,doi"})
+    for w in get(url)["results"]:
+        link = (w.get("open_access") or {}).get("oa_url") or w.get("doi") or w["id"]
+        yield {"area": area, "openalex_id": w["id"].rsplit("/", 1)[-1], "title": w.get("display_name") or "",
+               "url": link, "year": w.get("publication_year") or "", "cited_by": w.get("cited_by_count") or 0, "query": q}
+
+def harvest_research():
+    old = {}
+    if RESEARCH_OUT.exists():
+        for r in csv.DictReader(open(RESEARCH_OUT, encoding="utf-8")): old[(r["area"], r["openalex_id"])] = r
+    found = dict(old)
+    for area, qs in RESEARCH_QUERIES.items():
+        for q in qs:
+            try:
+                n = 0
+                for row in openalex(area, q):
+                    key = (row["area"], row["openalex_id"])
+                    if key not in found and row["title"] and str(row["url"]).startswith("http"):
+                        found[key] = {**row, "status": "candidate"}; n += 1
+                print(f"{'openalex':12} {area:36} {q!r}: +{n}")
+            except Exception as e:
+                print(f"{'openalex':12} {q!r}: FAILED {e}")
+            time.sleep(0.3)
+    with open(RESEARCH_OUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=RESEARCH_HEADER); w.writeheader()
+        for r in sorted(found.values(), key=lambda r: (r["area"], -int(r["cited_by"] or 0))):
+            w.writerow({k: str(r.get(k, "")).replace("\n", " ") for k in RESEARCH_HEADER})
+    print(f"wrote {len(found)} research candidates to {RESEARCH_OUT} ({len(found) - len(old)} new)")
 
 def earth_engine():
     roots = ["https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
@@ -152,3 +195,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    harvest_research()
