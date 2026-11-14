@@ -18,7 +18,7 @@ TABLES = {
     "candidate_datasets": {  # found by scripts/harvest_datasets.py; reviewed by hand before promotion
         "columns": [
             ("area",       "slug", True,  None),   # a problem_id, or a new area not yet written up
-            ("source",     "enum", True,  {"huggingface", "hdx", "earth_engine", "manual"}),
+            ("source",     "enum", True,  {"huggingface", "hdx", "earth_engine", "nasa_cmr", "noaa_ncei", "manual"}),
             ("source_id",  "str",  True,  None),
             ("title",      "str",  True,  None),
             ("url",        "url",  True,  None),

@@ -6,6 +6,8 @@ Sources (official APIs only; no page scraping):
   - Hugging Face Hub   https://huggingface.co/api/datasets?search=...
   - HDX (UN OCHA)      https://data.humdata.org/api/3/action/package_search?q=...   (CKAN)
   - Google Earth Engine public STAC catalog (weather, climate, land, buildings)
+  - NASA Earthdata (CMR)  https://cmr.earthdata.nasa.gov/search/collections.json?keyword=...
+  - NOAA NCEI            https://www.ncei.noaa.gov/access/services/search/v1/datasets?text=...
 
 Usage: python3 scripts/harvest_datasets.py        (stdlib only; needs internet)
 Existing rows keep their status; new finds come in as status=candidate.
@@ -31,6 +33,11 @@ EE_KEYWORDS = {  # Earth Engine is searched by keyword match on title/keywords/d
     "shelter-scarcity": ["building", "settlement", "population", "urban"],
     "food-waste": ["crop", "cropland", "agricultur"],
 }
+EARTH_QUERIES = {  # NASA and NOAA hold physical-world data, so only the areas where that fits
+    "dangerous-climate-conditions": ["heat wave", "extreme temperature", "flood", "drought", "precipitation", "land surface temperature"],
+    "food-waste": ["crop yield", "cropland", "food security", "agricultural drought"],
+    "shelter-scarcity": ["population density", "human settlements", "urban extent"],
+}
 PER_QUERY = 15
 
 def get(url, timeout=30):
@@ -53,6 +60,21 @@ def hdx(area, q):
         yield {"area": area, "source": "hdx", "source_id": d["name"], "title": d.get("title", d["name"]),
                "url": f"https://data.humdata.org/dataset/{d['name']}", "query": q,
                "license": d.get("license_title", ""), "popularity": (d.get("organization") or {}).get("title", "")}
+
+def nasa_cmr(area, q):
+    url = "https://cmr.earthdata.nasa.gov/search/collections.json?" + urllib.parse.urlencode({"keyword": q, "page_size": PER_QUERY})
+    for d in get(url)["feed"]["entry"]:
+        yield {"area": area, "source": "nasa_cmr", "source_id": d["id"], "title": d.get("title", d.get("short_name", d["id"])),
+               "url": f"https://search.earthdata.nasa.gov/search?q={urllib.parse.quote(d.get('short_name', d['id']))}",
+               "query": q, "license": "", "popularity": d.get("data_center", "")}
+
+def noaa_ncei(area, q):
+    url = "https://www.ncei.noaa.gov/access/services/search/v1/datasets?" + urllib.parse.urlencode({"text": q, "limit": PER_QUERY})
+    for d in get(url).get("results", []):
+        yield {"area": area, "source": "noaa_ncei", "source_id": d["id"], "title": d.get("name", d["id"]),
+               "url": next((l.get("url") for l in (d.get("links") or {}).get("other", []) if isinstance(l, dict) and l.get("url")),
+                           f"https://www.ncei.noaa.gov/access/search/dataset-search?text={urllib.parse.quote(d['id'])}"),
+               "query": q, "license": "", "popularity": "NOAA NCEI"}
 
 def earth_engine():
     roots = ["https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
@@ -91,6 +113,18 @@ def main():
     for area, qs in QUERIES.items():
         for q in qs:
             for name, fn in (("huggingface", huggingface), ("hdx", hdx)):
+                try:
+                    n = 0
+                    for row in fn(area, q):
+                        key = (row["area"], row["source"], row["source_id"])
+                        if key not in found: found[key] = {**row, "status": "candidate"}; n += 1
+                    print(f"{name:12} {area:36} {q!r}: +{n}")
+                except Exception as e:
+                    errors.append(f"{name} {q!r}: {e}"); print(f"{name:12} {q!r}: FAILED {e}")
+                time.sleep(0.3)
+    for area, qs in EARTH_QUERIES.items():
+        for q in qs:
+            for name, fn in (("nasa_cmr", nasa_cmr), ("noaa_ncei", noaa_ncei)):
                 try:
                     n = 0
                     for row in fn(area, q):
