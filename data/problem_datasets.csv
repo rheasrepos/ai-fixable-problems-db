@@ -49,3 +49,4 @@ overconsumption,exiobase-3,Trace the environmental cost of consumption back thro
 overconsumption,owid-consumption-co2,Compare emissions caused by what people consume vs. what is produced locally.
 overconsumption,global-ewaste-monitor,"Study how fast electronics are bought and thrown away, and recycling gaps."
 overconsumption,iphone-screen-time-addiction,Compare measured vs. self-reported phone use and how each relates to addiction scores.
+ai-black-box,ai-progress-open-dataset,"Track how fast AI capabilities and compute are growing, and how uncertain the compute estimates are."
