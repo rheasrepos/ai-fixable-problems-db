@@ -41,3 +41,15 @@ the same dimensions.
 
 ITU AI for Good, Omdena, Data.org, Project Drawdown, Copenhagen Consensus, Our World in Data, Google AI for Social Good.
 The Wayback Machine is blocked for Claude's tools; check aiforsdgs.org there by hand.
+
+## Impact data sources (checked 2026-11-14)
+
+Sources that measure what's been tried against these problems, and whether their data can be pulled in automatically.
+
+| Source | Covers | What's there | Can we pull it automatically? |
+|---|---|---|---|
+| [ReFED](https://docs.refed.org/methodologies/solutions_database/overview.html) | Food waste (US) | 40+ solutions with tons diverted, net financial benefit, GHG, water, meals, jobs; 700+ solution providers | **No.** [Terms](https://refed.org/terms-of-use) ban automated scraping except through an authorized API. Non-commercial reuse with attribution is allowed, so enter by hand with credit, or ask ReFED for API access. |
+| [Project Drawdown](https://www.drawdown.org/explorer/faqs) | Climate | 100+ solutions with effectiveness, adoption, climate impact, cost, speed | **Yes, with credit.** Data per solution under "Methods and Supporting Data"; [methodology on Zenodo](https://zenodo.org/records/18037237) is CC BY 4.0. Drawdown counts policy and funding as "levers", not solutions. |
+| [J-PAL evaluations](https://www.povertyactionlab.org/evaluations) | Poverty, labor, housing, etc. | 1,200+ RCT summaries in 99 countries; filters include an AI sector. Replication data on [Dataverse](https://www.povertyactionlab.org/blog/7-12-22/rct-data-survey-instruments-how-find-what-you-need-j-pal-dataverse) | **Not without asking.** No export and no terms page found. Curate by hand or ask J-PAL. |
+| [3ie Development Evidence Portal](https://3ieimpact.org/terms-of-use) | Development programs | Impact evaluations and systematic reviews | **Not without asking.** Terms allow personal, non-commercial use and prohibit commercial use; nothing on automated collection. |
+| OECD Creditor Reporting System | Funding flows | Project-level aid by sector and purpose code | **Yes.** Bulk download (~1.2 GB) via [oda_reader](https://pypi.org/project/oda_reader/) (MIT, by ONE Campaign). OECD's own data licence not yet confirmed. |

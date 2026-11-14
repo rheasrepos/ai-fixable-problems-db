@@ -19,6 +19,7 @@ sdg_goals ──< problems >──< problem_datasets >── datasets
 | datasets | an existing dataset | dataset_id, name, url, access (open / gated / proprietary / unknown), license, size (with units), modality |
 | problem_datasets | how one dataset serves one problem | problem_id, dataset_id, role |
 | existing_work | a paper, project, product or policy already working on it | work_id, problem_id, title, url, kind, year, maturity |
+| interventions | anything tried against a problem | intervention_id, problem_id, name, organization, kind (ai / other_tech / policy / funding / market / community / human_connection), year_started, url, scale, effect, evidence (rct / quasi_experimental / self_reported / none), effect_source, featured (well-known; shown first) |
 | data_gaps | data that's missing for a problem | problem_id, gap, why_it_matters, how_to_close |
 | risks | the risk case for a problem | who_could_be_harmed, dual_use, bias_and_representation, **ethics**, **morality**, **devils_advocate** (bold = required) |
 

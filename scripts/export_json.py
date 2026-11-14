@@ -10,6 +10,8 @@ def main(out="build/problems.json"):
     goals = {g["sdg_goal"]: g["name"] for g in rows("sdg_goals")}
     datasets = {d["dataset_id"]: d for d in rows("datasets")}
     links, work, gaps = rows("problem_datasets"), rows("existing_work"), rows("data_gaps")
+    ivs = rows("interventions")
+    ev_rank = {"rct": 0, "quasi_experimental": 1, "self_reported": 2, "none": 3}
     risks = {r["problem_id"]: r for r in rows("risks")}
     result = []
     for p in rows("problems"):
@@ -18,6 +20,9 @@ def main(out="build/problems.json"):
             "sdg_name": goals.get(p["sdg_goal"], ""),
             "datasets": [{**datasets[l["dataset_id"]], "role": l["role"]} for l in links if l["problem_id"] == pid and l["dataset_id"] in datasets],
             "existing_work": [w for w in work if w["problem_id"] == pid],
+            # well-known first, then strongest evidence
+            "interventions": sorted([v for v in ivs if v["problem_id"] == pid],
+                                    key=lambda v: (v["featured"] != "true", ev_rank.get(v["evidence"], 9), v["name"])),
             "data_gaps": [g for g in gaps if g["problem_id"] == pid],
             "risks": risks.get(pid, {}),
         })

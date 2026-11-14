@@ -71,6 +71,25 @@ TABLES = {
         ],
         "pk": ("work_id",), "fk": {"problem_id": ("problems", "problem_id")},
     },
+    "interventions": {  # anything tried against a problem: AI, other tech, policy, money, markets, people
+        "columns": [
+            ("intervention_id", "slug", True,  None),
+            ("problem_id",      "slug", True,  None),
+            ("name",            "str",  True,  None),
+            ("organization",    "str",  False, None),
+            ("kind",            "enum", True,  {"ai", "other_tech", "policy", "funding", "market",
+                                                 "community", "human_connection"}),
+            ("year_started",    "int",  False, None),
+            ("url",             "url",  True,  None),
+            ("scale",           "str",  False, None),  # reach, in the source's words
+            ("effect",          "str",  False, None),  # measured outcome, in the problem's units
+            ("evidence",        "enum", True,  {"rct", "quasi_experimental", "self_reported", "none"}),
+            ("effect_source",   "url",  False, None),
+            ("featured",        "enum", True,  {"true", "false"}),  # well-known; shown first
+            ("notes",           "str",  False, None),
+        ],
+        "pk": ("intervention_id",), "fk": {"problem_id": ("problems", "problem_id")},
+    },
     "data_gaps": {
         "columns": [
             ("problem_id",     "slug", True,  None),
