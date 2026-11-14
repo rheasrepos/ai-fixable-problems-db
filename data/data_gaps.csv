@@ -6,3 +6,5 @@ shelter-scarcity,Continuous homelessness data,Point-in-Time counts are a single 
 shelter-scarcity,Eviction filings,"Not in either dataset, but the most direct leading signal.",Court records (e.g. Eviction Lab)
 living-wage-gap,Open bulk living-wage data,"MIT's data requires a license beyond 10 locations, so a free tool can't redistribute it.",License request; or build an open cost-of-living estimate
 living-wage-gap,Wages by employer,"Public wage data is by sector and region, not by employer.",Job-posting pay ranges (pay transparency laws)
+raising-kids-in-a-digital-world,How young people actually use AI companions,Usage data sits with companies; surveys rely on self-report.,Privacy-preserving data donation by teens and families; researcher access to platform data
+raising-kids-in-a-digital-world,Outcomes of youth programs,"Most youth-connection nonprofits don't publish measured outcomes, so effects can't be compared.",Shared outcome measures across grantees (loneliness and belonging scales)
