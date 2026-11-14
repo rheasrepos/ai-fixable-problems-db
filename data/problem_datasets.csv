@@ -43,3 +43,9 @@ ai-black-box,dolma,Trace a model's behaviors back to what it read.
 ai-black-box,fineweb-edu,Study how data filtering changes what models learn.
 ai-black-box,aya-collection,Test whether safety holds outside English.
 culture-and-language-preservation,aya-collection,Instruction data across many languages for building tools in under-served languages.
+overconsumption,unep-irp-material-flows,"Compare how much material each country's consumption uses, including what it imports."
+overconsumption,footprint-network-nfa,Study ecological overshoot and how it tracks with income and human development.
+overconsumption,exiobase-3,Trace the environmental cost of consumption back through global supply chains.
+overconsumption,owid-consumption-co2,Compare emissions caused by what people consume vs. what is produced locally.
+overconsumption,global-ewaste-monitor,"Study how fast electronics are bought and thrown away, and recycling gaps."
+overconsumption,iphone-screen-time-addiction,Compare measured vs. self-reported phone use and how each relates to addiction scores.
