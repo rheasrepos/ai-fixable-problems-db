@@ -92,7 +92,7 @@ TABLES = {
             ("name",            "str",  True,  None),
             ("organization",    "str",  False, None),
             ("kind",            "enum", True,  {"ai", "other_tech", "policy", "funding", "market",
-                                                 "community", "human_connection"}),
+                                                 "community", "human_connection", "open_data"}),
             ("year_started",    "int",  False, None),
             ("url",             "url",  True,  None),
             ("scale",           "str",  False, None),  # reach, in the source's words

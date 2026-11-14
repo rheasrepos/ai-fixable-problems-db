@@ -5,3 +5,24 @@ shelter-scarcity,un-habitat-slum-population,Global picture of inadequate housing
 shelter-scarcity,hud-ahar-pit,US ground truth for homelessness by locality.
 living-wage-gap,mit-living-wage,US cost-of-living side of the gap.
 living-wage-gap,ilostat-wages,"Wage side of the gap, internationally comparable."
+culture-and-language-preservation,flores-plus,Evaluate translation for low-resource languages.
+culture-and-language-preservation,flores-asl,Benchmark for sign-language translation.
+culture-and-language-preservation,common-voice,Train and test speech recognition for small languages.
+culture-and-language-preservation,glottolog,"Which languages exist, where, and how they relate."
+dangerous-climate-conditions,ai4g-flood,Train flood-extent detection.
+dangerous-climate-conditions,impactmesh-flood,Train and benchmark flood-impact models.
+dangerous-climate-conditions,glofas-flood-hazard,"Where river floods are likely, for warning and planning."
+dangerous-climate-conditions,yale-urban-heat-islands,Which neighborhoods run hottest; closes part of the street-level gap.
+dangerous-climate-conditions,terraclimate,Long-run climate baselines and drought.
+dangerous-climate-conditions,speibase,Drought monitoring and history.
+dangerous-climate-conditions,cdc-heat-health-tracker,Ground truth for heat harm.
+food-waste,voxel51-food-waste,Train vision models that identify wasted food (the Winnow approach).
+food-waste,worldcereal,"Where food is grown, upstream of loss and waste."
+shelter-scarcity,google-open-buildings,Map housing stock and informal settlements.
+shelter-scarcity,google-open-buildings-temporal,Track how settlements grow.
+shelter-scarcity,world-settlement-footprint,"Where people live, at 10 m."
+shelter-scarcity,gpw-population,Population denominators for housing need.
+shelter-scarcity,hot-osm-hdx,Map infrastructure around housing; disaster damage.
+shelter-scarcity,eviction-lab-ets,Leading signal for housing loss.
+living-wage-gap,indeed-hiring-lab,Labor demand context for wage gaps.
+raising-kids-in-a-digital-world,cdc-yrbs,Track youth mental health alongside social media use.
