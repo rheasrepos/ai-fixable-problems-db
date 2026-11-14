@@ -10,3 +10,4 @@ raising-kids-in-a-digital-world,How young people actually use AI companions,Usag
 raising-kids-in-a-digital-world,Outcomes of youth programs,"Most youth-connection nonprofits don't publish measured outcomes, so effects can't be compared.",Shared outcome measures across grantees (loneliness and belonging scales)
 ai-black-box,Frontier model internals,Interpretability work mostly runs on small open models; frontier weights and training data are closed.,Researcher access programs; open-weight frontier releases
 ai-black-box,Energy per answer: local vs. data center,"No good open comparison of how much energy a query costs on a laptop vs. in a data center, so the case for local AI is unproven.",Measure it: open benchmarks of energy per token across hardware
+overconsumption,Individual-level consumption and screen-time data,"Purchase and usage data sits with retailers and platforms, not researchers.",Data donation by consenting users; platform transparency rules
