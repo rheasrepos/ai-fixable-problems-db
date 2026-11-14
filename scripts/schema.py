@@ -15,6 +15,20 @@ TABLES = {
         ],
         "pk": ("issue", "source"), "fk": {},
     },
+    "candidate_datasets": {  # found by scripts/harvest_datasets.py; reviewed by hand before promotion
+        "columns": [
+            ("area",       "slug", True,  None),   # a problem_id, or a new area not yet written up
+            ("source",     "enum", True,  {"huggingface", "hdx", "earth_engine", "manual"}),
+            ("source_id",  "str",  True,  None),
+            ("title",      "str",  True,  None),
+            ("url",        "url",  True,  None),
+            ("query",      "str",  False, None),
+            ("license",    "str",  False, None),
+            ("popularity", "str",  False, None),
+            ("status",     "enum", True,  {"candidate", "promoted", "rejected"}),
+        ],
+        "pk": ("area", "source", "source_id"), "fk": {},
+    },
     "sdg_goals": {
         "columns": [("sdg_goal", "int", True, None), ("name", "str", True, None)],
         "pk": ("sdg_goal",), "fk": {},

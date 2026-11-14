@@ -1,0 +1,6 @@
+area,source,source_id,title,url,query,license,popularity,status
+shelter-scarcity,manual,eviction-lab-ets,"Eviction Lab Eviction Tracking System (11 states, 43 cities, monthly filings) — fills gap: eviction filings",https://evictionlab.org/eviction-tracking/,data gap,not stated; open-source repo,,candidate
+dangerous-climate-conditions,manual,cdc-heat-health-tracker,"CDC Heat & Health Tracker (heat-related ER visits, community level) — fills gap: street-level outcomes",https://www.cdc.gov/nssp/php/partnerships/cdc-heat-health-tracker-uses-nssp-data.html,data gap,US public data,,candidate
+living-wage-gap,manual,indeed-hiring-lab,"Indeed Hiring Lab Job Postings Index (11 countries, daily) — postings only, no wages; partial fit",https://github.com/hiring-lab/data,data gap,CC-BY-4.0,,candidate
+culture-and-language-preservation,manual,glottolog,Glottolog languoid tables + language locations,https://glottolog.org/meta/downloads,data gap,CC-BY-4.0,,candidate
+culture-and-language-preservation,manual,elcat,"Catalogue of Endangered Languages (ELCat): speakers, vitality index, location",https://gmholton.github.io/elcat-data/ELCat.html,data gap,not stated,,candidate

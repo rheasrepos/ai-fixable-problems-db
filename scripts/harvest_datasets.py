@@ -1,0 +1,120 @@
+"""Find candidate datasets for each problem area through public catalog APIs, and write
+data/candidate_datasets.csv for review. Nothing here is added to datasets.csv automatically:
+promote rows by hand once a dataset checks out.
+
+Sources (official APIs only; no page scraping):
+  - Hugging Face Hub   https://huggingface.co/api/datasets?search=...
+  - HDX (UN OCHA)      https://data.humdata.org/api/3/action/package_search?q=...   (CKAN)
+  - Google Earth Engine public STAC catalog (weather, climate, land, buildings)
+
+Usage: python3 scripts/harvest_datasets.py        (stdlib only; needs internet)
+Existing rows keep their status; new finds come in as status=candidate.
+"""
+import csv, json, sys, time, urllib.parse, urllib.request
+from pathlib import Path
+
+OUT = Path(__file__).parent.parent / "data" / "candidate_datasets.csv"
+HEADER = ["area", "source", "source_id", "title", "url", "query", "license", "popularity", "status"]
+UA = {"User-Agent": "ai-fixable-problems-db harvester (github.com/rheasrepos/ai-fixable-problems-db)"}
+
+# area -> search terms. Areas are problem_ids, or new areas not yet written up as problems.
+QUERIES = {
+    "food-waste": ["food waste", "food loss", "food rescue", "food prices", "food security"],
+    "dangerous-climate-conditions": ["flood", "heat wave", "extreme weather", "precipitation", "drought"],
+    "shelter-scarcity": ["homelessness", "housing", "eviction", "informal settlements", "building footprints"],
+    "living-wage-gap": ["wages", "salary", "cost of living", "job postings", "minimum wage"],
+    "culture-and-language-preservation": ["endangered languages", "low-resource languages", "indigenous languages",
+                                          "oral history", "cultural heritage", "flores"],
+}
+EE_KEYWORDS = {  # Earth Engine is searched by keyword match on title/keywords/description
+    "dangerous-climate-conditions": ["temperature", "precipitation", "flood", "drought", "reanalysis", "era5"],
+    "shelter-scarcity": ["building", "settlement", "population", "urban"],
+    "food-waste": ["crop", "cropland", "agricultur"],
+}
+PER_QUERY = 15
+
+def get(url, timeout=30):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+def huggingface(area, q):
+    url = "https://huggingface.co/api/datasets?" + urllib.parse.urlencode(
+        {"search": q, "limit": PER_QUERY, "sort": "downloads", "direction": -1})
+    for d in get(url):
+        lic = next((t.split(":", 1)[1] for t in d.get("tags", []) if t.startswith("license:")), "")
+        yield {"area": area, "source": "huggingface", "source_id": d["id"], "title": d["id"],
+               "url": f"https://huggingface.co/datasets/{d['id']}", "query": q, "license": lic,
+               "popularity": f"{d.get('downloads', 0)} downloads"}
+
+def hdx(area, q):
+    url = "https://data.humdata.org/api/3/action/package_search?" + urllib.parse.urlencode({"q": q, "rows": PER_QUERY})
+    for d in get(url)["result"]["results"]:
+        yield {"area": area, "source": "hdx", "source_id": d["name"], "title": d.get("title", d["name"]),
+               "url": f"https://data.humdata.org/dataset/{d['name']}", "query": q,
+               "license": d.get("license_title", ""), "popularity": (d.get("organization") or {}).get("title", "")}
+
+def earth_engine():
+    roots = ["https://storage.googleapis.com/earthengine-stac/catalog/catalog.json",
+             "https://earthengine-stac.storage.googleapis.com/catalog/catalog.json"]
+    root = None
+    for r in roots:
+        try: root = get(r); base = r.rsplit("/", 1)[0]; break
+        except Exception as e: print(f"  earth engine: {r} failed ({e})")
+    if not root: return
+    def walk(node, base, depth=0):
+        for link in node.get("links", []):
+            if link.get("rel") != "child" or depth > 3: continue
+            href = urllib.parse.urljoin(base + "/", link["href"])
+            try: child = get(href)
+            except Exception: continue
+            if child.get("type") == "Collection" or "extent" in child:
+                yield child
+            else:
+                yield from walk(child, href.rsplit("/", 1)[0], depth + 1)
+            time.sleep(0.05)
+    for c in walk(root, base):
+        hay = " ".join([c.get("title", ""), c.get("description", "")[:500], " ".join(c.get("keywords", []))]).lower()
+        for area, kws in EE_KEYWORDS.items():
+            hit = next((k for k in kws if k in hay), None)
+            if hit:
+                yield {"area": area, "source": "earth_engine", "source_id": c["id"], "title": c.get("title", c["id"]),
+                       "url": f"https://developers.google.com/earth-engine/datasets/catalog/{c['id'].replace('/', '_')}",
+                       "query": hit, "license": c.get("license", ""), "popularity": ""}
+
+def main():
+    old = {}
+    if OUT.exists():
+        for r in csv.DictReader(open(OUT, encoding="utf-8")):
+            old[(r["area"], r["source"], r["source_id"])] = r
+    found, errors = dict(old), []
+    for area, qs in QUERIES.items():
+        for q in qs:
+            for name, fn in (("huggingface", huggingface), ("hdx", hdx)):
+                try:
+                    n = 0
+                    for row in fn(area, q):
+                        key = (row["area"], row["source"], row["source_id"])
+                        if key not in found: found[key] = {**row, "status": "candidate"}; n += 1
+                    print(f"{name:12} {area:36} {q!r}: +{n}")
+                except Exception as e:
+                    errors.append(f"{name} {q!r}: {e}"); print(f"{name:12} {q!r}: FAILED {e}")
+                time.sleep(0.3)
+    print("earth engine catalog (takes a few minutes)...")
+    try:
+        n = 0
+        for row in earth_engine():
+            key = (row["area"], row["source"], row["source_id"])
+            if key not in found: found[key] = {**row, "status": "candidate"}; n += 1
+        print(f"earth_engine: +{n}")
+    except Exception as e:
+        errors.append(f"earth_engine: {e}")
+    rows = sorted(found.values(), key=lambda r: (r["area"], r["source"], r["source_id"]))
+    with open(OUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=HEADER); w.writeheader()
+        for r in rows: w.writerow({k: (r.get(k) or "").replace("\n", " ") for k in HEADER})
+    print(f"\nwrote {len(rows)} candidates to {OUT} ({len(rows) - len(old)} new)")
+    if errors: print("errors:", *errors, sep="\n  ")
+
+if __name__ == "__main__":
+    main()
