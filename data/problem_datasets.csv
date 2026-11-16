@@ -50,3 +50,7 @@ overconsumption,owid-consumption-co2,Compare emissions caused by what people con
 overconsumption,global-ewaste-monitor,"Study how fast electronics are bought and thrown away, and recycling gaps."
 overconsumption,iphone-screen-time-addiction,Compare measured vs. self-reported phone use and how each relates to addiction scores.
 ai-black-box,ai-progress-open-dataset,"Track how fast AI capabilities and compute are growing, and how uncertain the compute estimates are."
+dangerous-climate-conditions,ecmwf-open-data,Run an open AI weather model yourself and compare its forecast with what happened.
+food-waste,refed-insights-engine,See which sectors and causes account for the most surplus food in the US.
+living-wage-gap,skillspan,Train or test a model that pulls skills out of job postings.
+culture-and-language-preservation,americasnlp-2021,Test how well translation models handle Indigenous languages of the Americas.

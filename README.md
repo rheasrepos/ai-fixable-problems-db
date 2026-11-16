@@ -7,10 +7,12 @@ A database of problems in the world that could be addressed with AI, given the l
 v0 scaffold (2026-10-23): schema, validator, JSON export, and CI are in place. The SDG goals are prefilled; the other tables have headers only.
 
 ```
-data/*.csv                 seven linked tables (see SCHEMA.md)
+data/*.csv                 linked tables (see SCHEMA.md)
 scripts/schema.py          table definitions (source of truth)
 scripts/validate.py        checks every PR (stdlib only)
 scripts/export_json.py     joins everything into build/problems.json for the raddotcom page
+scripts/sync_merge.py      copies it into raddotcom, keeping the site's LLM-written marks
+UNUSED_TOOLS_REPORT.md     research behind data/tools.csv: which open tools are used, and why not
 ```
 
 Design: linked tables (problems ↔ datasets); UN SDG taxonomy; solution kind (digital / physical / hybrid); required risk section with ethics, morality, and devil's advocate; CSVs in GitHub, browsed on raddotcom.

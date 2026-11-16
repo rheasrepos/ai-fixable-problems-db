@@ -117,6 +117,30 @@ TABLES = {
         ],
         "pk": ("intervention_id",), "fk": {"problem_id": ("problems", "problem_id")},
     },
+    "tools": {  # an AI tool, model or dataset built for a problem: how open it is, and whether anyone uses it
+        "columns": [
+            ("tool_id",       "slug", True,  None),
+            ("problem_id",    "slug", True,  None),
+            ("name",          "str",  True,  None),
+            ("organization",  "str",  False, None),
+            ("url",           "url",  True,  None),   # the source the row rests on
+            ("url_2",         "url",  False, None),
+            ("openness",      "enum", True,  {"open", "open_restricted", "open_code_closed_data", "gated",
+                                               "closed", "not_open_by_choice", "not_verified"}),
+            ("license",       "str",  False, None),
+            ("released",      "str",  False, None),   # what was released: code, weights, data, paper only
+            ("use_status",    "enum", True,  {"deployed", "deployment_ended", "creator_only", "research_only",
+                                               "no_evidence_found", "not_verified"}),
+            ("deployment_evidence", "str", False, None),  # who uses it, in the source's terms
+            ("maintenance",   "str",  False, None),
+            ("barrier",       "str",  False, None),   # documented reason it is not used more
+            ("verification",  "enum", True,  {"verified", "partly_verified", "snippet_only", "unverified"}),
+            ("verification_note", "str", False, None),
+            ("contributor",   "str",  True,  None),
+            ("date_added",    "date", True,  None),   # also the date the row was checked
+        ],
+        "pk": ("tool_id",), "fk": {"problem_id": ("problems", "problem_id")},
+    },
     "data_gaps": {
         "columns": [
             ("problem_id",     "slug", True,  None),

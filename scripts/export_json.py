@@ -11,6 +11,7 @@ def main(out="build/problems.json"):
     datasets = {d["dataset_id"]: d for d in rows("datasets")}
     links, work, gaps = rows("problem_datasets"), rows("existing_work"), rows("data_gaps")
     ivs = rows("interventions")
+    tools = rows("tools")
     ev_rank = {"rct": 0, "quasi_experimental": 1, "self_reported": 2, "none": 3}
     risks = {r["problem_id"]: r for r in rows("risks")}
     result = []
@@ -23,6 +24,7 @@ def main(out="build/problems.json"):
             # well-known first, then strongest evidence
             "interventions": sorted([v for v in ivs if v["problem_id"] == pid],
                                     key=lambda v: (v["featured"] != "true", ev_rank.get(v["evidence"], 9), v["name"])),
+            "tools": [t for t in tools if t["problem_id"] == pid],
             "data_gaps": [g for g in gaps if g["problem_id"] == pid],
             "risks": risks.get(pid, {}),
         })
