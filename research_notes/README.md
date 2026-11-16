@@ -25,8 +25,8 @@ Checked against the source on 2026-11-16:
 - **ECMWF real-time data is no longer a paid license.** On 1 October 2025 ECMWF opened its entire real-time
   catalogue under CC BY 4.0 with no data charges ([ECMWF](https://www.ecmwf.int/node/29497)). Limits: delivery of
   the full high-volume data may still carry service charges, and the free online subset is at 25 km, with 9 km
-  forecasts (2-hour latency) announced for later in 2026. The digital-twin lineage doc in the Claude project
-  still says the feed is paid; a correction note sits next to it.
+  forecasts (2-hour latency) announced for later in 2026. The simulation source-data lineage doc in the Claude project
+  (`claude/simulation-source-data-lineage.md`) was corrected on the same date.
 
 Decisions for Rhea:
 
@@ -45,7 +45,7 @@ Not researched at all (names only, nothing known):
 
 - Child safety: cyberbullying classifiers and datasets, open age-estimation models, NSFW proxy classifiers.
 - Climate: FuXi, FengWu, NeuralGCM, ClimaX, Prithvi WxC, ClimateBench, WeatherBench 2, ClimateLearn.
-- Food: FAO Food Loss and Waste database as a tool, WRAP tools, cold-chain digital twins, Winnow, Leanpath, Too Good To Go.
+- Food: FAO Food Loss and Waste database as a tool, WRAP tools, cold-chain shipment simulations, Winnow, Leanpath, Too Good To Go.
 - Shelter and wage: Open Buildings and Overture, slum-mapping models, DataKind projects, JobBERT, ESCOXLM-R, Fairwork, Turkopticon, labor-market ABMs.
 - Languages: ELAR, PARADISEC, AILLA, Universal Dependencies, FLORES, Aya, Living Tongues.
 

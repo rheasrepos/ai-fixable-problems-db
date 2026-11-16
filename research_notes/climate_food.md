@@ -134,7 +134,7 @@ In food, open artifacts split sharply: open datasets and estimates are used by i
 - The M5 evidence suggests a different reason open forecasting models do not turn into waste reduction: at store-SKU level the accuracy gain from sophisticated open methods is small, so the value is in data integration and workflow, which is what closed vendors sell.
 
 ### Gaps
-- Not researched or not found this session: FAO Food Loss and Waste Database (licence and usage), WRAP tools, open cold-chain digital-twin code, open perishables demand-forecasting repos other than M5, Winnow and Leanpath deployment counts, Too Good To Go, open yield models, and whether any retailer uses an open-source forecasting stack in production. [U] FAO's FLW database is free to download under FAO's CC BY-NC-SA 3.0 IGO terms; Winnow reports deployments in thousands of commercial kitchens; Too Good To Go is a closed consumer marketplace. All unverified here.
+- Not researched or not found this session: FAO Food Loss and Waste Database (licence and usage), WRAP tools, open cold-chain shipment-simulation code, open perishables demand-forecasting repos other than M5, Winnow and Leanpath deployment counts, Too Good To Go, open yield models, and whether any retailer uses an open-source forecasting stack in production. [U] FAO's FLW database is free to download under FAO's CC BY-NC-SA 3.0 IGO terms; Winnow reports deployments in thousands of commercial kitchens; Too Good To Go is a closed consumer marketplace. All unverified here.
 - PlantVillage dataset: [U] roughly 54,000 lab-photographed leaf images; the original 2016 paper reported accuracy collapsing to about 31% on images taken under different conditions. Not verified this session; the search surfaced only the Nuru field-evaluation papers ([S] Mrisho et al. 2020, Frontiers in Plant Science, reports Nuru matching or beating extension agents on cassava diagnosis: https://www.frontiersin.org/articles/10.3389/fpls.2020.590889/full).
 - APHLIS current funding status and maintenance as of 2026 not found (the fetched page is from 2019). [U] APHLIS+ was funded by the Bill & Melinda Gates Foundation.
 - Sharing Excess app repository licence and current activity not verified. Food Rescue Robot archived flag not shown by the mirror.
@@ -209,7 +209,7 @@ Documented reasons cluster into four groups: no organisational capacity or fundi
 | Afresh | food (retail) | Closed commercial ordering AI | closed | proprietary | Deployed at grocers; claims 200M lb/yr prevented (Mar 2026) | Active | n/a (contrast); manager overrides | https://www.thepacker.com/news/sustainability/ai-cuts-food-waste-produce-aisle-grocers-battle-cultural-overrides | V (vendor claim) |
 | Shelf Engine | food (retail) | Closed commercial ordering AI | closed | proprietary | 7,000+ US stores; acquired by Crisp (Mar 2025 per URL) | Absorbed into Crisp | n/a (contrast) | https://www.geekwire.com/2025/seattle-startup-shelf-engine-acquired-by-retail-data-company-crisp/ | V (content), S (date) |
 | Winnow, Leanpath, Too Good To Go | food | Closed commercial | closed | proprietary | not verified this session | not found | n/a (contrast) | n/a | UNVERIFIED |
-| FAO Food Loss and Waste Database, WRAP tools, cold-chain digital twins | food | Data / tools | not verified | not found | not found | not found | not found | n/a | not researched |
+| FAO Food Loss and Waste Database, WRAP tools, cold-chain shipment simulations | food | Data / tools | not verified | not found | not found | not found | not found | n/a | not researched |
 
 ---
 
