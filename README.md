@@ -13,6 +13,7 @@ scripts/validate.py        checks every PR (stdlib only)
 scripts/export_json.py     joins everything into build/problems.json for the raddotcom page
 scripts/sync_merge.py      copies it into raddotcom, keeping the site's LLM-written marks
 UNUSED_TOOLS_REPORT.md     research behind data/tools.csv: which open tools are used, and why not
+research_notes/            raw notes behind the report, plus the open items list
 ```
 
 Design: linked tables (problems ↔ datasets); UN SDG taxonomy; solution kind (digital / physical / hybrid); required risk section with ethics, morality, and devil's advocate; CSVs in GitHub, browsed on raddotcom.
