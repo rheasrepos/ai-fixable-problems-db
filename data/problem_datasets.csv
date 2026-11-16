@@ -33,11 +33,11 @@ dangerous-climate-conditions,gdelt,"Track where disasters and displacement are r
 food-waste,faostat-food-loss,Compare food loss across countries and supply-chain stages.
 living-wage-gap,wageindicator-living-wage,Cross-country living wage comparison; the free sample is enough to prototype.
 shelter-scarcity,gdelt,"Track news of evictions, displacement and refugee movements."
-ai-black-box,hh-rlhf,Study how preference training shapes refusals and harm.
-ai-black-box,pku-saferlhf,Study the trade-off between being helpful and being safe.
-ai-black-box,real-toxicity-prompts,Measure toxic degeneration across models.
-ai-black-box,decodingtrust,Compare models' trustworthiness across eight areas.
-ai-black-box,machiavelli,Test whether AI agents trade ethics for reward.
+ai-black-box,hh-rlhf,Study how preference training shapes refusals and harm. Content note: includes harmful requests and offensive text.
+ai-black-box,pku-saferlhf,Study the trade-off between being helpful and being safe. Content note: includes unsafe and offensive text.
+ai-black-box,real-toxicity-prompts,Measure toxic degeneration across models. Content note: contains toxic and offensive text.
+ai-black-box,decodingtrust,Compare models' trustworthiness across eight areas. Content note: includes toxic text and stereotypes.
+ai-black-box,machiavelli,Test whether AI agents trade ethics for reward. Content note: stories depict deception and ethical violations.
 ai-black-box,saebench,Compare interpretability methods on a common footing.
 ai-black-box,dolma,Trace a model's behaviors back to what it read.
 ai-black-box,fineweb-edu,Study how data filtering changes what models learn.
@@ -53,4 +53,3 @@ ai-black-box,ai-progress-open-dataset,"Track how fast AI capabilities and comput
 dangerous-climate-conditions,ecmwf-open-data,Run an open AI weather model yourself and compare its forecast with what happened.
 food-waste,refed-insights-engine,See which sectors and causes account for the most surplus food in the US.
 living-wage-gap,skillspan,Train or test a model that pulls skills out of job postings.
-culture-and-language-preservation,americasnlp-2021,Test how well translation models handle Indigenous languages of the Americas.

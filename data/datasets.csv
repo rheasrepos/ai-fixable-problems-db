@@ -51,4 +51,3 @@ ai-progress-open-dataset,AI Progress Open Dataset (Rhea's companion dataset),htt
 ecmwf-open-data,ECMWF open data,https://ecmwf.int/en/forecasts/datasets/open-data,open,CC BY 4.0,,gridded forecasts,Real-time global weather forecasts and the starting conditions AI weather models need.,claude-draft,2026-11-16
 refed-insights-engine,ReFED Insights Engine,https://docs.refed.org/methodologies/food_waste_monitor/overview.html,open,Not found,,tabular,"US surplus-food estimates by sector and cause; the outputs are open, some inputs are confidential.",claude-draft,2026-11-16
 skillspan,SkillSpan,https://github.com/kris927b/SkillSpan,open,MIT,,text,Job postings with the skills in them marked up by hand.,claude-draft,2026-11-16
-americasnlp-2021,AmericasNLP 2021,https://github.com/AmericasNLP/americasnlp2021,open,None stated,,parallel text,Translation pairs for Indigenous languages of the Americas.,claude-draft,2026-11-16
