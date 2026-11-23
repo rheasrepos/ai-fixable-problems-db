@@ -53,3 +53,18 @@ Sources that measure what's been tried against these problems, and whether their
 | [J-PAL evaluations](https://www.povertyactionlab.org/evaluations) | Poverty, labor, housing, etc. | 1,200+ RCT summaries in 99 countries; filters include an AI sector. Replication data on [Dataverse](https://www.povertyactionlab.org/blog/7-12-22/rct-data-survey-instruments-how-find-what-you-need-j-pal-dataverse) | **Not without asking.** No export and no terms page found. Curate by hand or ask J-PAL. |
 | [3ie Development Evidence Portal](https://3ieimpact.org/terms-of-use) | Development programs | Impact evaluations and systematic reviews | **Not without asking.** Terms allow personal, non-commercial use and prohibit commercial use; nothing on automated collection. |
 | OECD Creditor Reporting System | Funding flows | Project-level aid by sector and purpose code | **Yes.** Bulk download (~1.2 GB) via [oda_reader](https://pypi.org/project/oda_reader/) (MIT, by ONE Campaign). OECD's own data licence not yet confirmed. |
+
+## Sweep of other trackers, November 2026 (drafted by Claude from search results; pages not opened)
+
+Other efforts that catalogue AI for the world's problems, and what they found about whether it gets used:
+
+- **McKinsey's AI for social good library.** About 160 use cases in 2018, about 600 in 2024, mapped to the SDGs. In 2018 real examples existed for only about a third of them, "albeit in relatively small tests". https://www.mckinsey.com/capabilities/quantumblack/our-insights/ai-for-social-good
+- **Pilots that never leave the lab.** A FAccT 2026 paper (Majumdar et al.) cites Bankhwal et al. (2024) for the finding that 72% of AI-for-social-impact projects never leave research and development; its 26 interviews say the failures are rarely about the technology. https://arxiv.org/html/2506.14829v1
+- **"Digital graveyards."** Kanika Bahl (formerly Evidence Action) names fragmentation, pilots with no plan to scale, and too little funding. https://www.devex.com/news/why-ai-for-good-still-isn-t-scaling-and-a-new-effort-to-fix-it-111579
+- **Stanford HAI, "Beyond Pilots and PR: What Makes AI for Good Partnerships Work"** (October 2026; not read). https://hai.stanford.edu/policy/beyond-pilots-and-pr-what-makes-ai-for-good-partnerships-work
+- **J-PAL's AI Evidence Playbook** (a living synthesis of randomized evaluations of AI programs) and **Project AI Evidence** (funds new trials). https://www.povertyactionlab.org/es/node/8138063
+- **Center for Global Development**: an evaluation framework for AI products in development (April 2025), and the warning that a tested model may no longer exist by the time results are published. https://www.cgdev.org/event/evaluating-ai-whats-new-and-why-development-sector-should-care
+- **ITU's AI for Good project database**, mentioned in an AI-for-social-good paper; not checked. https://philpapers.org/archive/COWADB.pdf
+- **AidData** used machine learning to tag 2.7 million development projects with SDGs. https://www.aiddata.org/blog/aiddata-uses-ai-to-code-2-7-million-projects-to-the-sustainable-development-goals
+
+What this database adds that these don't: per row, whether the thing is actually in use and how strong the evidence is that it helps, next to efforts that don't use AI.
