@@ -17,7 +17,7 @@ sdg_goals ──< problems >──< problem_datasets >── datasets
 | sdg_goals | a UN Sustainable Development Goal (1–17, prefilled) | sdg_goal, name |
 | candidate_issues | a problem pulled from an outside list, not yet written up | issue, source, url, status (candidate / promoted / out_of_scope), problem_id |
 | problems | a problem AI could help fix | problem_id, name, description, sdg_goal (primary), sdg_targets (any goal, e.g. `12.3;2.1`), solution_kind (digital / physical / hybrid), solution_summary, maturity (idea / research / pilot / deployed) |
-| datasets | an existing dataset | dataset_id, name, url, access (open / gated / proprietary / unknown), license, size (with units), modality |
+| datasets | an existing dataset | dataset_id, name, url, access (open / gated / proprietary / unknown), license, size (with units), modality, scale (local / regional / country / not-place-based: the smallest area the data resolves) |
 | problem_datasets | how one dataset serves one problem | problem_id, dataset_id, role |
 | existing_work | a paper, project, product or policy already working on it | work_id, problem_id, title, url, kind, year, maturity |
 | interventions | anything tried against a problem | intervention_id, problem_id, name, organization, kind (ai / other_tech / policy / funding / market / community / human_connection / open_data), year_started, url, scale, effect, evidence (rct / quasi_experimental / self_reported / none), effect_source, featured (well-known; shown first) |
