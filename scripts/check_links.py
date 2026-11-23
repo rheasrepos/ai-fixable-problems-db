@@ -7,7 +7,7 @@
 Writes build/link_report.csv: table, row id, column, url, status, final url, note.
   ok        the page answered normally
   moved     it answered, but at a different address (check the row still points at the right thing)
-  blocked   the site refused an automated visit (401/403/429): open it by hand, it is probably fine
+  blocked   the site refused an automated visit (401/402/403/429, a reset connection, or a certificate Python can't check): open it by hand, it is probably fine
   broken    404/410, a server error, or no answer at all
 Nothing in data/ is changed. Standard library only.
 """
@@ -27,7 +27,7 @@ def links():
             for k, v in r.items():
                 if v and re.match(r"https?://", v): yield table, rid, k, v.strip()
 
-def check(url):
+def check(url, depth=0):
     target = url.split("#")[0]
     for method in ("HEAD", "GET"):
         try:
@@ -39,11 +39,19 @@ def check(url):
                 return ("ok" if same else "moved"), final, str(res.status)
         except urllib.error.HTTPError as e:
             if method == "HEAD" and e.code in (400, 403, 405, 406, 501): continue      # some sites refuse HEAD; try GET
-            if e.code in (401, 403, 429): return "blocked", "", str(e.code)
+            if e.code in (301, 302, 303, 307, 308) and e.headers.get("Location"):   # redirects urllib does not follow by itself
+                nxt = urllib.parse.urljoin(target, e.headers["Location"])
+                if nxt != target and depth < 4:
+                    s2, f2, n2 = check(nxt, depth + 1)
+                    return ("moved" if s2 in ("ok", "moved") else s2), (f2 or nxt), n2
+            if e.code in (401, 402, 403, 429): return "blocked", "", str(e.code)
             return "broken", "", str(e.code)
         except Exception as e:
             if method == "HEAD": continue
-            return "broken", "", type(e).__name__ + ": " + str(e)[:80]
+            msg = type(e).__name__ + ": " + str(e)[:80]
+            # a refused connection or a certificate Python can't check is usually the site rejecting scripts, not a dead page
+            if "ConnectionReset" in msg or "CERTIFICATE_VERIFY_FAILED" in msg: return "blocked", "", msg
+            return "broken", "", msg
     return "broken", "", "no answer"
 
 def main():
