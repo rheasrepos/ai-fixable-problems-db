@@ -53,3 +53,7 @@ ai-infrastructure,ai-progress-open-dataset,"Track how fast AI capabilities and c
 dangerous-climate-conditions,ecmwf-open-data,Run an open AI weather model yourself and compare its forecast with what happened.
 food-waste,refed-insights-engine,See which sectors and causes account for the most surplus food in the US.
 living-wage-gap,skillspan,Train or test a model that pulls skills out of job postings.
+ai-black-box,tracr,Ground truth: run an interpretability method on a model whose circuit you already know and check whether it finds it.
+ai-black-box,interpbench,Score a method against a known circuit in a more realistic network than a compiled one.
+ai-black-box,tracrbench,More known-answer test cases for interpretability methods.
+ai-black-box,construct-validity-llm-benchmarks,"Study which kinds of benchmark claims hold up, and reuse its checklist on a new eval."

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this database, please cite it as below."
+title: "AI-Fixable Problems Database"
+authors:
+  - family-names: Madhogarhia
+    given-names: Rhea
+date-released: 2026-10-23
+url: "https://rheamad.vercel.app/ai-problems"
+repository-code: "https://github.com/rheasrepos/ai-fixable-problems-db"
+license: CC-BY-4.0
+type: dataset

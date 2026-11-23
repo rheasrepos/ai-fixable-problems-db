@@ -37,6 +37,10 @@ The note sits beside Buchanan's section on data, the second leg of the "AI triad
 
 - [ ] (none recorded yet)
 
-## Citation
+## How to cite this database
+
+Madhogarhia, Rhea. *AI-Fixable Problems Database*. 2026. https://rheamad.vercel.app/ai-problems (data: https://github.com/rheasrepos/ai-fixable-problems-db). Data licensed CC BY 4.0; code MIT. Many descriptions were drafted with an LLM (rows marked `claude-draft`) and are being checked against their sources.
+
+## Citation (the passage this responds to)
 
 Buchanan, Ben. "The AI Triad and What It Means for National Security Strategy." Center for Security and Emerging Technology (CSET), Georgetown University. https://cset.georgetown.edu/wp-content/uploads/CSET-AI-Triad-Report.pdf
