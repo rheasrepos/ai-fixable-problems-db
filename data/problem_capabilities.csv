@@ -1,0 +1,34 @@
+problem_id,task,why,example
+food-waste,Object detection,"Spot and weigh what gets thrown away, from a camera over the bin.",winnow
+food-waste,Image classification,Tell food types apart in photos of plates or bins.,canteen-plate-waste-model
+dangerous-climate-conditions,Weather forecasting,"Faster, cheaper forecasts of heat, storms and floods.",ecmwf-aifs
+dangerous-climate-conditions,Flood Mapping,Map where water is from satellite images during a flood.,prithvi-eo-flood-burn
+dangerous-climate-conditions,Wildfire Mapping,Map burned and burning areas from satellite images.,prithvi-eo-flood-burn
+shelter-scarcity,Semantic segmentation,Trace buildings and settlements in satellite images to count housing.,google-open-buildings-project
+living-wage-gap,Named entity recognition (NER),"Pull job titles, pay and skills out of job postings.",skillspan
+living-wage-gap,Text classification,Flag postings or complaints that suggest wage theft.,stanford-wage-theft-ml
+raising-kids-in-a-digital-world,Text classification,Detect grooming or harmful messages aimed at children.,vogt-grooming-models
+raising-kids-in-a-digital-world,Image classification,Detect abuse images so they can be removed and reported.,thorn-safer-predict
+raising-kids-in-a-digital-world,Chat,"The companion chatbots children use, which this problem is partly about.",
+culture-and-language-preservation,Translation,Translate between low-resource languages and widely spoken ones.,meta-nllb-200
+culture-and-language-preservation,Speech recognition (ASR),Transcribe recordings of speakers of endangered languages.,meta-mms
+culture-and-language-preservation,Text-to-speech (TTS),Give learners spoken examples in languages with few recordings.,
+culture-and-language-preservation,Character recognition (OCR),Digitize printed and handwritten texts in endangered languages.,
+ai-black-box,Language modeling/generation,The models interpretability research studies.,pythia
+ai-infrastructure,Language modeling/generation,The models whose compute and energy this problem is about.,epoch-ai
+extreme-poverty,Image classification,Estimate where poor households are from satellite images.,
+hunger-and-food-insecurity,Crop Mapping / Segmentation,"Map what is planted where from satellite images, to estimate harvests.",
+hunger-and-food-insecurity,Weather forecasting,Warn of droughts and floods that destroy harvests.,
+children-not-learning,Chat,AI tutors that answer a student's questions.,
+children-not-learning,Mathematical reasoning,Explain and check maths problems step by step.,
+gender-gaps,Face recognition,"Tested for unequal error rates by sex and skin type, as in Gender Shades.",
+unsafe-water-and-sanitation,Semantic segmentation,Map water bodies and water points from satellite images.,
+energy-access-and-clean-power,Weather forecasting,Forecast sun and wind so solar and wind power are easier to run.,
+energy-access-and-clean-power,Semantic segmentation,Find rooftops and settlements that need power from satellite images.,
+widening-inequality,Question answering,Help people find and apply for benefits they qualify for.,
+overfishing-and-ocean-loss,Object detection,"Find vessels in satellite images, including ones not broadcasting their position.",skylight
+forest-and-species-loss,Semantic segmentation,Detect cleared forest in satellite images.,glad-deforestation-alerts
+forest-and-species-loss,Audio classification,"Hear chainsaws, gunshots and animal calls in forest recordings.",rainforest-connection
+forest-and-species-loss,Image classification,Identify species from camera-trap and phone photos.,
+tracking-aid-and-the-goals,Text classification,Tag aid projects with the goals they serve.,
+overconsumption,Object detection,Sort waste for recycling by recognizing items on a conveyor.,

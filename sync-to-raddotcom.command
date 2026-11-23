@@ -8,6 +8,11 @@ if [ ! -d "$RAD/static" ]; then echo "Can't find raddotcom at $RAD"; exit 1; fi
 if python3 scripts/validate.py && python3 scripts/export_json.py \
    && python3 scripts/sync_merge.py build/problems.json "$RAD/static/ai-problems.json"; then
   echo "Copied to $RAD/static/ai-problems.json. Commit and push raddotcom to deploy."
+  # the AI Progress Open Dataset summary (what AI models can do), if that repo sits beside this one
+  AIP="${AIPROGRESS:-$(dirname "$PWD")/ai-progress-open-dataset}"
+  if [ -f "$AIP/scripts/export_site_summary.py" ] && python3 "$AIP/scripts/export_site_summary.py" "$RAD/static/ai-progress.json"; then
+    echo "Copied the AI Progress summary to $RAD/static/ai-progress.json."
+  fi
 else
   echo "Stopped: fix the errors above first."; exit 1
 fi

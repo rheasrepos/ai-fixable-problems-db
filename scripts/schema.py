@@ -148,6 +148,15 @@ TABLES = {
         ],
         "pk": ("tool_id",), "fk": {"problem_id": ("problems", "problem_id")},
     },
+    "problem_capabilities": {  # which AI tasks (as labelled in the AI Progress Open Dataset) a problem could use; drafted by Claude, check it
+        "columns": [
+            ("problem_id", "slug", True,  None),
+            ("task",       "str",  True,  None),   # exactly a task label from ai-progress-open-dataset/data/models.csv
+            ("why",        "str",  True,  None),   # what the task would do for this problem
+            ("example",    "str",  False, None),   # an effort or tool in this database that already uses it, if any
+        ],
+        "pk": ("problem_id", "task"), "fk": {"problem_id": ("problems", "problem_id")},
+    },
     "data_gaps": {
         "columns": [
             ("problem_id",     "slug", True,  None),
