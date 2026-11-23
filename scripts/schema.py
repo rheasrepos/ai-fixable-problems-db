@@ -133,6 +133,7 @@ TABLES = {
             ("url_2",         "url",  False, None),
             ("openness",      "enum", True,  {"open", "open_restricted", "open_code_closed_data", "gated",
                                                "closed", "not_open_by_choice", "not_verified"}),
+            ("uses_ai",       "enum", False, {"yes", "no", "unclear"}),  # is the tool itself AI or machine learning; drafted by Claude, check it
             ("license",       "str",  False, None),
             ("released",      "str",  False, None),   # what was released: code, weights, data, paper only
             ("use_status",    "enum", True,  {"deployed", "deployment_ended", "creator_only", "research_only",
