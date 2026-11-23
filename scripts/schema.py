@@ -107,6 +107,7 @@ TABLES = {
             ("name",            "str",  True,  None),
             ("organization",    "str",  False, None),
             ("org_type",        "enum", False, {"nonprofit", "company", "government", "multilateral", "research", "community"}),  # who runs it; blank = not confirmed
+            ("uses_ai",         "enum", False, {"yes", "no", "unclear"}),  # does the effort itself use AI or machine learning (separate from kind); drafted by Claude, check it
             ("kind",            "enum", True,  {"ai", "other_tech", "policy", "funding", "market",
                                                  "community", "human_connection", "open_data"}),
             ("year_started",    "int",  False, None),
