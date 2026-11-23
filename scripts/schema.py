@@ -115,6 +115,8 @@ TABLES = {
             ("effect",          "str",  False, None),  # measured outcome, in the problem's units
             ("evidence",        "enum", True,  {"rct", "quasi_experimental", "self_reported", "none"}),
             ("effect_source",   "url",  False, None),
+            ("support",         "str",  False, None),  # how to help or reach them, in a word or two: Donate, Reach out, Email, Volunteer
+            ("support_url",     "str",  False, None),  # their own page for that, or a mailto: address they publish
             ("featured",        "enum", True,  {"true", "false"}),  # well-known; shown first
             ("notes",           "str",  False, None),
         ],
