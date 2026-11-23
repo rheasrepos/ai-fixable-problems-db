@@ -106,6 +106,7 @@ TABLES = {
             ("problem_id",      "slug", True,  None),
             ("name",            "str",  True,  None),
             ("organization",    "str",  False, None),
+            ("org_type",        "enum", False, {"nonprofit", "company", "government", "multilateral", "research", "community"}),  # who runs it; blank = not confirmed
             ("kind",            "enum", True,  {"ai", "other_tech", "policy", "funding", "market",
                                                  "community", "human_connection", "open_data"}),
             ("year_started",    "int",  False, None),
