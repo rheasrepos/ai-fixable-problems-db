@@ -57,3 +57,22 @@ ai-black-box,tracr,Ground truth: run an interpretability method on a model whose
 ai-black-box,interpbench,Score a method against a known circuit in a more realistic network than a compiled one.
 ai-black-box,tracrbench,More known-answer test cases for interpretability methods.
 ai-black-box,construct-validity-llm-benchmarks,"Study which kinds of benchmark claims hold up, and reuse its checklist on a new eval."
+extreme-poverty,wb-pip,"Baseline: how many people are poor, where, and how that changed over time."
+extreme-poverty,ophi-global-mpi,"Compare income poverty with what people actually lack, down to regions within countries."
+hunger-and-food-insecurity,fao-food-security-indicators,"Baseline: who is food insecure, by country and year."
+hunger-and-food-insecurity,wfp-food-prices,Early warning: model price spikes that come before food crises.
+children-not-learning,uis-data-browser,"Baseline: who is in school and who finishes, by country."
+children-not-learning,pisa-2022,Study what is linked to learning: model scores from student and school factors.
+gender-gaps,wb-gender-data-portal,Baseline: measure the gaps by country and track whether they are closing.
+unsafe-water-and-sanitation,jmp-wash,"Baseline: who lacks safe water and toilets, by country and year."
+unsafe-water-and-sanitation,aquastat,Study water stress: compare how much water countries have with how much farming uses.
+energy-access-and-clean-power,owid-energy,Baseline: how each country's power is made and how fast that is changing.
+energy-access-and-clean-power,global-solar-atlas,Planning: find where solar panels would produce the most power.
+widening-inequality,wid,Measure who gets what: track the top and bottom shares over time.
+widening-inequality,wiid,Cross-check inequality figures from different sources and methods.
+overfishing-and-ocean-loss,gfw-fishing-effort,Detect patterns: find fishing in protected areas or by vessels that go dark.
+overfishing-and-ocean-loss,obis,Model where ocean species live and how their ranges are shifting.
+forest-and-species-loss,hansen-global-forest-change,Train and test models that detect forest clearing.
+forest-and-species-loss,gbif,Model species ranges and spot where records are thin.
+tracking-aid-and-the-goals,un-sdg-global-database,Baseline for every goal: see which indicators are on track and where data is missing.
+tracking-aid-and-the-goals,iati-datastore,Follow the money: link what was funded to the goal it was meant to serve.
