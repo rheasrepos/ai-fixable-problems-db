@@ -71,6 +71,7 @@ TABLES = {
             ("size",        "str",  False, None),  # free text with units, e.g. "2.1 TB", "40M records"
             ("modality",    "list", False, None),  # e.g. "satellite imagery;tabular"
             ("scale",       "enum", False, {"local", "regional", "country", "not-place-based"}),  # smallest area the data resolves: places within a city/county; states, provinces or coarse grid cells; one figure per country; or not tied to places
+            ("language",    "str",  False, None),  # for data not tied to a place: which languages it covers, as its own card or paper states it
             ("description", "str",  False, None),
             ("contributor", "str",  True,  None),
             ("date_added",  "date", True,  None),
